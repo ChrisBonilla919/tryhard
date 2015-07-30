@@ -1,0 +1,116 @@
+@import url(http://fonts.googleapis.com/css?family=Sintony:400,700);
+@font-face {
+  font-family: 'EuroCaps';
+  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/49914/eurocaps.eot');
+  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/49914/eurocaps.eot?#iefix') format('embedded-opentype'),
+       url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/49914/eurocaps.woff') format('woff'),
+       url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/49914/eurocaps.ttf') format('truetype'),
+       url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/49914/eurocaps.svg#EuroCaps') format('svg');
+}
+
+:root {
+  background-color: black;
+  font: normal normal 2vw/1.25 'EuroCaps' sans-serif;
+  color: white;
+  perspective: 12in;
+  overflow: hidden;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  transform-style: preserve-3d;
+  animation: test 7.5s ease-in-out infinite;
+  transform: rotatey(0deg);
+  line-height: inherit;
+}
+
+@keyframes test {
+  0%    { transform: rotatex(0deg) rotatey(0deg); }
+  25%   { transform: rotatex(0deg) rotatey(15deg); }
+  50%   { transform: rotatex(15deg) rotatey(-15deg); }
+  75%   { transform: rotatex(-25deg) rotatey(-15deg); }
+  100%  { transform: rotatex(0deg) rotatey(0deg); }
+
+}
+
+.panel {
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+#target {
+  width: 25vw;
+  &:extend(.panel);
+  transform:
+    translate3d(-50vw, 40vh, -3in)
+    translate(-50%, -50%)
+    rotatey(33deg)
+    ;
+}
+
+#info, #comms {
+  > ul {
+    height: 20vh;
+    font-family: 'Sintony';
+    font-size: 0.6rem;
+    line-height: 1.48;
+  }
+}
+
+#info {
+  ul>li::before {
+    content: ">\00A0";
+  }
+}
+
+#comms {
+  ul>li::before {
+    content: "[" attr(data-who) "]\00A0";
+  }
+}
+
+#info {
+  width: 40vw;
+  &:extend(.panel);
+  transform:
+    translate3d(40vw, -40vh, -3in)
+    translate(-50%, -50%)
+    
+    rotatey(-33deg)
+    rotatex(-10deg)
+    ;  
+}
+
+#comms {
+  width: 40vw;  
+  &:extend(.panel);
+  transform:
+    translate3d(-40vw, -40vh, -3in)
+    translate(-50%, -50%)
+    rotatey(33deg)
+    rotatex(-10deg)
+    ;  
+}
+
+@color: rgb(255,(128+96)/2,0);
+
+h2 {
+  border: 0.1rem solid fade(@color, 75%);
+  border-left: 0; border-right: 0;
+  border-bottom-width: 0.2rem;
+  padding: 0 0.25rem;
+}
+
+.glow {
+  color: transparent;
+  text-shadow: 
+    0 0 0.06rem @color,
+    -0.1rem 0 fade(mix(@color, rgb(255,0,0), 40%), 25%),
+    0.1rem 0 fade(mix(@color, rgb(0,255,0), 40%),25%),
+    0 0.1rem fade(mix(@color, rgb(0,255,255), 40%),25%),
+    0 -0.1rem fade(mix(@color, rgb(0,0,255), 40%),25%),
+    0 0 0.75rem fade(black, 50%)
+}

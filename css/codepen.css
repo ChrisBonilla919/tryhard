@@ -1,0 +1,134 @@
+$b:4px; //borders size
+
+*{padding: 0;margin: 0;box-sizing: border-box;}
+
+body{
+  background:#f5f5f5;
+  animation:bg 10s ease-in-out infinite;
+}
+
+@keyframes bg{
+  30%{
+   background:#2c3e50;
+  }
+  70%{
+   background:#415A8A;
+  }
+}
+
+.circle{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:100px;
+  height: 100px;
+  background:transparent;
+  border:3px double tomato;
+  display: block;
+  animation:rt 2s ease-out infinite;
+  &:before{
+  content:'';
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:100px;
+  height: 100px;
+  background:transparent;
+  border:3px double tomato;
+  display: block;
+  animation:rt 3s ease-out infinite;
+  }
+  &:after{
+  content:'';
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:120px;
+  height: 120px;
+  background:transparent;
+  border:3px solid tomato;
+  display: block;
+  animation:rt 4s ease-out infinite;
+  }
+}
+
+
+.circle-two{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:200px;
+  height: 200px;
+  background:transparent;
+  border:3px double tomato;
+  display: block;
+  animation:rtw 4s ease-out infinite;
+  &:before{
+  content:'';
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:200px;
+  height: 200px;
+  background:transparent;
+  border:3px solid tomato;
+  display: block;
+  animation:rtw 4s ease-out infinite;
+  }
+  &:after{
+  content:'';
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:200px;
+  height: 200px;
+  background:transparent;
+  border:3px solid tomato;
+  display: block;
+  animation:rtw 5s ease-out infinite;
+  }
+}
+
+@keyframes rt{
+  10%{
+    transform:translate(-50%, -50%) rotate(50deg);
+  }
+  50%{
+    transform:translate(-50%, -50%) rotate(180deg);
+    border-color:#295ba0;
+    height:50px;
+    width:50px;
+  }
+  70%{
+    border-radius:50%;
+  }
+  100%{
+    transform:translate(-50%, -50%) rotate(360deg);
+    border-radius:0%;
+  }
+}
+
+@keyframes rtw{
+  10%{
+    transform:translate(-50%, -50%) rotate(50deg);
+  }
+  50%{
+    transform:translate(-50%, -50%) rotate(180deg);
+    border-color:#2ecc71;
+    height:50px;
+    width:50px;
+  }
+  70%{
+    border-radius:50%;
+  }
+  100%{
+    transform:translate(-50%, -50%) rotate(360deg);
+    border-radius:0%;
+  }
+}
